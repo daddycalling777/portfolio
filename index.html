@@ -7,29 +7,44 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #111111;
-      line-height: 1.6;
+      background: linear-gradient(180deg, #ffffff, #f7f9fc);
+      color: #111;
+      overflow-x: hidden;
     }
 
     a { text-decoration: none; color: inherit; }
 
-    /* Layout */
+    /* Particles */
+    #particles-js {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* Container */
     .container {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
       padding: 0 20px;
     }
 
     /* Header */
     header {
-      padding: 60px 0 40px;
-      border-bottom: 1px solid #eeeeee;
+      padding: 50px 0;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .nav {
@@ -47,79 +62,104 @@
     .nav-links a {
       margin-left: 25px;
       font-weight: 500;
-      color: #444444;
-      transition: 0.2s;
+      color: #444;
+      position: relative;
     }
 
-    .nav-links a:hover {
-      color: #000000;
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: #2563eb;
+      transition: 0.3s;
     }
+
+    .nav-links a:hover::after { width: 100%; }
 
     /* Hero */
     .hero {
-      padding: 90px 0 80px;
+      padding: 110px 0 90px;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: 3.3rem;
       font-weight: 700;
       letter-spacing: -1px;
-      max-width: 700px;
+      max-width: 720px;
+      animation: float 6s ease-in-out infinite;
     }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero span { color: #2563eb; }
 
     .hero p {
       margin-top: 20px;
       font-size: 1.1rem;
-      color: #555555;
+      color: #555;
       max-width: 600px;
     }
 
-    .hero-btns {
-      margin-top: 35px;
-    }
+    .hero-btns { margin-top: 35px; }
 
     .btn {
       display: inline-block;
-      padding: 12px 26px;
+      padding: 13px 28px;
       border-radius: 30px;
       font-size: 0.95rem;
       font-weight: 500;
-      border: 1px solid #000000;
+      border: 1px solid #000;
       transition: 0.25s;
       margin-right: 15px;
     }
 
     .btn-primary {
-      background: #000000;
-      color: #ffffff;
+      background: #000;
+      color: #fff;
     }
 
-    .btn-primary:hover {
-      background: #222222;
-    }
+    .btn-primary:hover { background: #222; }
 
     .btn-outline:hover {
-      background: #000000;
-      color: #ffffff;
+      background: #000;
+      color: #fff;
     }
 
     /* Section */
     section {
-      padding: 90px 0;
-      border-bottom: 1px solid #eeeeee;
+      padding: 95px 0;
+      position: relative;
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 600;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
       letter-spacing: -0.5px;
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* About */
     .about p {
-      max-width: 750px;
-      color: #444444;
+      max-width: 760px;
+      color: #444;
       font-size: 1.05rem;
     }
 
@@ -127,20 +167,36 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 32px;
     }
 
     .project-card {
-      border: 1px solid #eeeeee;
-      padding: 28px;
-      border-radius: 16px;
-      transition: 0.25s;
-      background: #fafafa;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid #eee;
+      padding: 30px;
+      border-radius: 18px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, #2563eb22, transparent);
+      transform: translateX(-100%);
+      transition: 0.6s;
+    }
+
+    .project-card:hover::before {
+      transform: translateX(100%);
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
     }
 
     .project-card h3 {
@@ -150,30 +206,26 @@
 
     .project-card p {
       font-size: 0.95rem;
-      color: #555555;
+      color: #555;
     }
 
-    .project-links {
-      margin-top: 15px;
-    }
+    .project-links { margin-top: 15px; }
 
     .project-links a {
       font-size: 0.9rem;
       font-weight: 500;
       margin-right: 15px;
-      color: #000000;
+      color: #2563eb;
       border-bottom: 1px solid transparent;
       transition: 0.2s;
     }
 
-    .project-links a:hover {
-      border-color: #000000;
-    }
+    .project-links a:hover { border-color: #2563eb; }
 
     /* Contact */
     .contact p {
       margin-bottom: 10px;
-      color: #444444;
+      color: #444;
     }
 
     /* Footer */
@@ -181,16 +233,20 @@
       padding: 35px 0;
       text-align: center;
       font-size: 0.85rem;
-      color: #777777;
+      color: #777;
+      border-top: 1px solid #eee;
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.3rem; }
+      .hero h1 { font-size: 2.4rem; }
       .nav-links a { margin-left: 15px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Particles -->
+  <div id="particles-js"></div>
 
   <!-- Header -->
   <header>
@@ -205,11 +261,11 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero reveal">
     <div class="container">
-      <h1>Building intelligent hardware and embedded systems.</h1>
+      <h1>Building <span>intelligent hardware</span> and embedded systems.</h1>
       <p>
-        Electronics and Communication Engineering student focused on IoT, embedded systems, and hardware-software integration.
+        Electronics and Communication Engineering student focused on IoT, embedded systems, and hardware–software integration.
       </p>
 
       <div class="hero-btns">
@@ -220,7 +276,7 @@
   </section>
 
   <!-- About -->
-  <section id="about">
+  <section id="about" class="reveal">
     <div class="container about">
       <h2 class="section-title">About</h2>
       <p>
@@ -230,7 +286,7 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects">
+  <section id="projects" class="reveal">
     <div class="container">
       <h2 class="section-title">Projects</h2>
 
@@ -263,7 +319,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact">
+  <section id="contact" class="reveal">
     <div class="container contact">
       <h2 class="section-title">Contact</h2>
       <p>Email: 2004kunal02.07@gmail.com</p>
@@ -275,6 +331,41 @@
   <footer>
     © 2026 Kunal Pal. All rights reserved.
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    /* Particles Config */
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60 },
+        color: { value: '#2563eb' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: 'repulse' }
+        }
+      }
+    });
+
+    /* Scroll Reveal */
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
