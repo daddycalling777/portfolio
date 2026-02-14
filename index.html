@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kunal Pal | Cyberpunk ECE Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: #050510;
+      color: #00fff7;
+      overflow-x: hidden;
+    }
+
+    /* Neon Grid Background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(#00fff720 1px, transparent 1px),
+        linear-gradient(90deg, #00fff720 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 20s linear infinite;
+      z-index: -2;
+    }
+
+    /* Glow Overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #ff00ff22, transparent 60%);
+      z-index: -1;
+    }
+
+    @keyframes gridMove {
+      from { transform: translateY(0); }
+      to { transform: translateY(40px); }
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.8rem;
+      letter-spacing: 3px;
+      color: #00fff7;
+      text-shadow:
+        0 0 10px #00fff7,
+        0 0 25px #00fff7,
+        0 0 50px #ff00ff;
+      animation: flicker 3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      45% { opacity: 0.8; }
+      48% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    header p {
+      margin-top: 20px;
+      color: #ff00ff;
+      font-size: 1.1rem;
+    }
+
+    nav { margin-top: 35px; }
+
+    nav a {
+      color: #00fff7;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 12%;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 45px;
+      color: #ff00ff;
+      text-shadow: 0 0 12px #ff00ff;
+    }
+
+    /* Glass Neon Card */
+    .card {
+      background: rgba(0, 0, 40, 0.6);
+      border: 1px solid #00fff7aa;
+      backdrop-filter: blur(15px);
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow:
+        0 0 15px #00fff755,
+        inset 0 0 10px #ff00ff33;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, #00fff744, transparent);
+      transform: translateX(-100%);
+      transition: 0.6s;
+    }
+
+    .card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow:
+        0 0 30px #00fff7,
+        0 0 60px #ff00ff55;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+    }
+
+    .project-card h3 {
+      color: #00fff7;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #c4ffff;
+    }
+
+    .project-links {
+      margin-top: 18px;
+    }
+
+    .project-links a {
+      color: #ff00ff;
+      margin-right: 18px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s;
+    }
+
+    .project-links a:hover {
+      border-color: #ff00ff;
+      text-shadow: 0 0 8px #ff00ff;
+    }
+
+    /* Contact */
+    #contact p {
+      margin-bottom: 12px;
+      color: #c4ffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: #888;
+      background: #030308;
+      border-top: 1px solid #00fff733;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.4rem; }
+      section { padding: 70px 7%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kunal Pal</h1>
+    <p>ECE | Embedded | IoT | Hardware Systems Engineer</p>
+
+    <nav>
+      <a href="#about">ABOUT</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">SYSTEM PROFILE</h2>
+    <div class="card">
+      <p>
+        Electronics and Communication Engineering student focused on building high-performance embedded and IoT systems. Specialized in sensor integration, real-time firmware, and smart hardware platforms. Passionate about Edge AI and next-gen cyber-physical systems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">CORE PROJECTS</h2>
+
+    <div class="projects-grid">
+
+      <div class="card project-card">
+        <h3>Water Quality Monitoring System</h3>
+        <p>
+          IoT-enabled platform to monitor pH, turbidity, and temperature in real time. Integrated sensors with microcontroller and Blynk cloud for remote analytics and alerts.
+        </p>
+        <div class="project-links">
+          <a href="#">SOURCE</a>
+          <a href="#">DEMO</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Smart Blind Assistance Stick</h3>
+        <p>
+          Assistive embedded device using ultrasonic sensing and haptic alerts for obstacle detection. Designed for low-power, portable real-world deployment.
+        </p>
+        <div class="project-links">
+          <a href="#">SOURCE</a>
+          <a href="#">DEMO</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">COMM LINK</h2>
+    <div class="card">
+      <p>📧 2004kunal02.07@gmail.com</p>
+      <p>🔗 linkedin.com/in/kunal-pal-015351267</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 | Kunal Pal | Cyberpunk Engineering Portfolio
+  </footer>
+
+</body>
+</html>
