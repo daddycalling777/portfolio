@@ -3,270 +3,278 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kunal Pal | Cyberpunk ECE Portfolio</title>
+  <title>Kunal Pal | ECE Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Share Tech Mono', monospace;
-      background: #050510;
-      color: #00fff7;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
     }
 
-    /* Neon Grid Background */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(#00fff720 1px, transparent 1px),
-        linear-gradient(90deg, #00fff720 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: gridMove 20s linear infinite;
-      z-index: -2;
-    }
+    a { text-decoration: none; color: inherit; }
 
-    /* Glow Overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, #ff00ff22, transparent 60%);
-      z-index: -1;
-    }
-
-    @keyframes gridMove {
-      from { transform: translateY(0); }
-      to { transform: translateY(40px); }
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
     }
 
     /* Header */
     header {
-      text-align: center;
-      padding: 120px 20px 80px;
+      padding: 60px 0 40px;
+      border-bottom: 1px solid #eeeeee;
     }
 
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.8rem;
-      letter-spacing: 3px;
-      color: #00fff7;
-      text-shadow:
-        0 0 10px #00fff7,
-        0 0 25px #00fff7,
-        0 0 50px #ff00ff;
-      animation: flicker 3s infinite alternate;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    @keyframes flicker {
-      0% { opacity: 1; }
-      45% { opacity: 0.8; }
-      48% { opacity: 0.4; }
-      50% { opacity: 1; }
-      100% { opacity: 1; }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
 
-    header p {
+    .nav-links a {
+      margin-left: 25px;
+      font-weight: 500;
+      color: #444444;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #000000;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 90px 0 80px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      max-width: 700px;
+    }
+
+    .hero p {
       margin-top: 20px;
-      color: #ff00ff;
       font-size: 1.1rem;
+      color: #555555;
+      max-width: 600px;
     }
 
-    nav { margin-top: 35px; }
-
-    nav a {
-      color: #00fff7;
-      margin: 0 18px;
-      text-decoration: none;
-      font-weight: bold;
-      position: relative;
-      transition: 0.3s;
+    .hero-btns {
+      margin-top: 35px;
     }
 
-    nav a:hover {
-      color: #ff00ff;
-      text-shadow: 0 0 10px #ff00ff;
+    .btn {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid #000000;
+      transition: 0.25s;
+      margin-right: 15px;
     }
 
-    /* Sections */
+    .btn-primary {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #222222;
+    }
+
+    .btn-outline:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    /* Section */
     section {
-      padding: 90px 12%;
+      padding: 90px 0;
+      border-bottom: 1px solid #eeeeee;
     }
 
     .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 45px;
-      color: #ff00ff;
-      text-shadow: 0 0 12px #ff00ff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+      letter-spacing: -0.5px;
     }
 
-    /* Glass Neon Card */
-    .card {
-      background: rgba(0, 0, 40, 0.6);
-      border: 1px solid #00fff7aa;
-      backdrop-filter: blur(15px);
-      padding: 35px;
-      border-radius: 22px;
-      box-shadow:
-        0 0 15px #00fff755,
-        inset 0 0 10px #ff00ff33;
-      transition: 0.4s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, #00fff744, transparent);
-      transform: translateX(-100%);
-      transition: 0.6s;
-    }
-
-    .card:hover::before {
-      transform: translateX(100%);
-    }
-
-    .card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow:
-        0 0 30px #00fff7,
-        0 0 60px #ff00ff55;
+    /* About */
+    .about p {
+      max-width: 750px;
+      color: #444444;
+      font-size: 1.05rem;
     }
 
     /* Projects */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      border: 1px solid #eeeeee;
+      padding: 28px;
+      border-radius: 16px;
+      transition: 0.25s;
+      background: #fafafa;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
     }
 
     .project-card h3 {
-      color: #00fff7;
-      margin-bottom: 12px;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
     }
 
     .project-card p {
       font-size: 0.95rem;
-      line-height: 1.6;
-      color: #c4ffff;
+      color: #555555;
     }
 
     .project-links {
-      margin-top: 18px;
+      margin-top: 15px;
     }
 
     .project-links a {
-      color: #ff00ff;
-      margin-right: 18px;
-      text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 500;
+      margin-right: 15px;
+      color: #000000;
       border-bottom: 1px solid transparent;
-      transition: 0.3s;
+      transition: 0.2s;
     }
 
     .project-links a:hover {
-      border-color: #ff00ff;
-      text-shadow: 0 0 8px #ff00ff;
+      border-color: #000000;
     }
 
     /* Contact */
-    #contact p {
-      margin-bottom: 12px;
-      color: #c4ffff;
+    .contact p {
+      margin-bottom: 10px;
+      color: #444444;
     }
 
+    /* Footer */
     footer {
+      padding: 35px 0;
       text-align: center;
-      padding: 30px;
       font-size: 0.85rem;
-      color: #888;
-      background: #030308;
-      border-top: 1px solid #00fff733;
+      color: #777777;
     }
 
     @media (max-width: 768px) {
-      header h1 { font-size: 2.4rem; }
-      section { padding: 70px 7%; }
+      .hero h1 { font-size: 2.3rem; }
+      .nav-links a { margin-left: 15px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
-    <h1>Kunal Pal</h1>
-    <p>ECE | Embedded | IoT | Hardware Systems Engineer</p>
-
-    <nav>
-      <a href="#about">ABOUT</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+    <div class="container nav">
+      <div class="logo">Kunal Pal</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Building intelligent hardware and embedded systems.</h1>
+      <p>
+        Electronics and Communication Engineering student focused on IoT, embedded systems, and hardware-software integration.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+  </section>
 
   <!-- About -->
   <section id="about">
-    <h2 class="section-title">SYSTEM PROFILE</h2>
-    <div class="card">
+    <div class="container about">
+      <h2 class="section-title">About</h2>
       <p>
-        Electronics and Communication Engineering student focused on building high-performance embedded and IoT systems. Specialized in sensor integration, real-time firmware, and smart hardware platforms. Passionate about Edge AI and next-gen cyber-physical systems.
+        I am a BTech Electronics and Communication Engineering student (2022–2026) with hands-on experience in embedded systems and IoT development. I enjoy designing reliable hardware platforms and integrating them with efficient software solutions.
       </p>
     </div>
   </section>
 
   <!-- Projects -->
   <section id="projects">
-    <h2 class="section-title">CORE PROJECTS</h2>
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
 
-    <div class="projects-grid">
+      <div class="projects-grid">
 
-      <div class="card project-card">
-        <h3>Water Quality Monitoring System</h3>
-        <p>
-          IoT-enabled platform to monitor pH, turbidity, and temperature in real time. Integrated sensors with microcontroller and Blynk cloud for remote analytics and alerts.
-        </p>
-        <div class="project-links">
-          <a href="water.html">DETAILS</a>
-          <a href="#">DEMO</a>
+        <div class="project-card">
+          <h3>Water Quality Monitoring System</h3>
+          <p>
+            IoT-based system for monitoring pH, turbidity, and temperature using embedded sensors and cloud connectivity.
+          </p>
+          <div class="project-links">
+            <a href="#">Details</a>
+            <a href="#">Demo</a>
+          </div>
         </div>
-      </div>
 
-      <div class="card project-card">
-        <h3>Smart Blind Assistance Stick</h3>
-        <p>
-          Assistive embedded device using ultrasonic sensing and haptic alerts for obstacle detection. Designed for low-power, portable real-world deployment.
-        </p>
-        <div class="project-links">
-          <a href="#">SOURCE</a>
-          <a href="#">DEMO</a>
+        <div class="project-card">
+          <h3>Smart Blind Assistance Stick</h3>
+          <p>
+            Assistive embedded device for obstacle detection using ultrasonic sensors and alert mechanisms.
+          </p>
+          <div class="project-links">
+            <a href="#">Details</a>
+            <a href="#">Demo</a>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact">
-    <h2 class="section-title">COMM LINK</h2>
-    <div class="card">
-      <p>📧 2004kunal02.07@gmail.com</p>
-      <p>🔗 linkedin.com/in/kunal-pal-015351267</p>
+    <div class="container contact">
+      <h2 class="section-title">Contact</h2>
+      <p>Email: 2004kunal02.07@gmail.com</p>
+      <p>LinkedIn: linkedin.com/in/kunal-pal-015351267</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    © 2026 | Kunal Pal | Cyberpunk Engineering Portfolio
+    © 2026 Kunal Pal. All rights reserved.
   </footer>
-<!-- rebuild -->
 
 </body>
 </html>
-
-
